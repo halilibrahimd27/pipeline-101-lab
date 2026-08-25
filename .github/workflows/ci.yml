@@ -1,0 +1,34 @@
+# ---------------------------------------------------------------
+#  Pipeline Security 101 — LAB
+#
+#  Bu dosya BILEREK hatali yazildi. Icinde 5 tane sorun var.
+#  Gorevin onlari tek tek duzeltmek.
+#
+#  Ne yapacagini bilmiyorsan: README.md dosyasini ac.
+# ---------------------------------------------------------------
+
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Paketleri kur
+        run: npm install
+
+      - name: Testleri calistir
+        run: npm test
+
+      - name: Son commit mesajini logla
+        run: echo "Son commit -> ${{ github.event.head_commit.message }}"

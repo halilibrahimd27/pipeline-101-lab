@@ -1,0 +1,14 @@
+{
+  "name": "pipeline-101-lab",
+  "version": "1.0.0",
+  "description": "Pipeline Security 101 - uygulama lab'i",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test src/index.test.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "lodash": "4.17.15"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------
+#  KARNE — bu dosyaya dokunmana gerek yok.
+#
+#  Her push'tan sonra calisir ve gorevlerin durumunu
+#  Actions > kontrol > Summary ekraninda gosterir.
+# ---------------------------------------------------------------
+
+name: kontrol
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  karne:
+    name: Karne
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Gorevleri kontrol et
+        run: python3 .github/scripts/kontrol.py
