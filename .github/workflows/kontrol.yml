@@ -19,7 +19,9 @@ jobs:
     name: Karne
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Not: bu satir bilerek dogru yazildi — Gorev 4'te senden
+      # istenen sey tam olarak bu. Ornegi burada gorebilirsin.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Gorevleri kontrol et
         run: python3 .github/scripts/kontrol.py

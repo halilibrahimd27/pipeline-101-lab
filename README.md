@@ -1,5 +1,10 @@
 # Pipeline Security 101 — LAB
 
+[![karne](../../actions/workflows/kontrol.yml/badge.svg)](../../actions/workflows/kontrol.yml)
+
+> Yukarıdaki rozet **senin** repondaki karneyi gösterir. Kırmızıysa daha
+> bitmedi demektir; hepsini düzelttiğinde yeşile döner.
+
 Bu repoda küçük bir Node.js uygulaması ve onu test eden bir **pipeline** var.
 Pipeline çalışıyor, testler geçiyor, her şey yolunda görünüyor.
 
@@ -136,22 +141,29 @@ değiştirilebilir — ve o kod senin pipeline'ında çalışır.
 
 Numarayı şöyle bulacaksın:
 
-1. Yeni bir sekmede `github.com/actions/checkout` adresini aç
-2. Sağ taraftaki **`Releases`** bölümünden en güncel `v4` sürümüne tıkla
+1. Yeni bir sekmede
+   [github.com/actions/checkout/releases](https://github.com/actions/checkout/releases)
+   adresini aç
+2. En üstteki sürüme tıkla (`Latest` etiketi onda olur)
 3. Sürüm başlığının altındaki **commit numarasına** tıkla
 4. Açılan sayfada sağ üstteki **`Copy full SHA`** düğmesine bas
 
 Sonra `ci.yml` dosyasında şu hale getir:
 
 ```yaml
-- uses: actions/checkout@<yapistirdigin-40-karakter>   # v4.x.x
-- uses: actions/setup-node@<yapistirdigin-40-karakter> # v4.x.x
+- uses: actions/checkout@<yapistirdigin-40-karakter>   # kopyaladigin surum
+- uses: actions/setup-node@<yapistirdigin-40-karakter> # kopyaladigin surum
 ```
 
-Aynı işlemi `actions/setup-node` için de tekrarla.
+Aynı işlemi
+[actions/setup-node](https://github.com/actions/setup-node/releases)
+için de tekrarla.
 
-> Yanına sürüm numarasını yorum olarak bırak — altı ay sonra o numaranın
-> hangi sürüm olduğunu hatırlamak istersin.
+> Hangi sürümü seçtiğin önemli değil — karne belirli bir sürüm değil,
+> **40 karakterlik geçerli bir numara** arıyor. En güncelini al, yeter.
+>
+> Yorum kısmına kopyaladığın sürümü yaz (örneğin `# v7.0.1`) — altı ay
+> sonra o 40 karakterin hangi sürüm olduğunu hatırlamak istersin.
 >
 > Numarayı yanlış yazarsan `ci` iş akışı kırmızı olur. Sorun değil, karneyi
 > basan `kontrol` iş akışı yine çalışır.

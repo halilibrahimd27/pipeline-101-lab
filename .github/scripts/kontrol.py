@@ -99,8 +99,9 @@ for no, satir in enumerate(ci.splitlines(), start=1):
         continue
     if re.match(r"\s*-?\s*run:", satir):
         riskli_satirlar.append(no)
-    elif re.match(r"\s*[\w.\-]+:\s*\$\{\{", satir):
+    elif re.match(r"""\s*[\w.\-]+:\s*["']?\$\{\{""", satir):
         continue                       # env: ALTINDA — dogru kullanim
+                                       # (tirnakli yazim da kabul: MESAJ: "${{ ... }}")
     else:
         riskli_satirlar.append(no)     # muhtemelen bir run blogunun icinde
 
